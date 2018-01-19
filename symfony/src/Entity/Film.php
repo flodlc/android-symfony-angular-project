@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -40,6 +41,26 @@ class Film
      * @ORM\Column(type="integer")
      */
     private $montantRecette;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Categorie")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $categorie;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Personnage")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $personnages;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Realisateur")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $realisateur;
 
     /**
      * @return int
@@ -136,4 +157,60 @@ class Film
     {
         $this->montantRecette = $montantRecette;
     }
+
+    /**
+     * @return Categorie
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * @param Categorie $categorie
+     */
+    public function setCategorie(Categorie $categorie)
+    {
+        $this->categorie = $categorie;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPersonnages()
+    {
+        return $this->personnages;
+    }
+
+    /**
+     * @param Personnage $personnage
+     */
+    public function addPersonnage(Personnage $personnage){
+        $this->personnages[] = $personnage;
+    }
+
+    /**
+     * @param Personnage $personnage
+     */
+    public function removePersonnage(Personnage $personnage){
+        $this->personnages->removeElement($personnage);
+    }
+
+    /**
+     * @return Realisateur
+     */
+    public function getRealisateur()
+    {
+        return $this->realisateur;
+    }
+
+    /**
+     * @param Realisateur $realisateur
+     */
+    public function setRealisateur($realisateur)
+    {
+        $this->realisateur = $realisateur;
+    }
+
+
 }
