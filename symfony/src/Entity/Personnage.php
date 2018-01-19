@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,11 +18,15 @@ class Personnage
     private $id;
 
     /**
+     * @Groups({"film"})
+     *
      * @ORM\Column(type="string")
      */
     private $nomPerso;
 
     /**
+     * @Groups({"film"})
+     *
      * @ORM\ManyToOne(targetEntity="Acteur")
      * @ORM\JoinColumn(nullable=false)
      */

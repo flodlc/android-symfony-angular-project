@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FilmRepository")
@@ -18,37 +19,52 @@ class Film
     private $id;
 
     /**
+     * @Groups({"film"})
      * @ORM\Column(type="string")
      */
     private $title;
 
     /**
+     * @Groups({"film"})
      * @ORM\Column(type="integer")
      */
     private $duree;
 
     /**
+     * @var \DateTime
+     *
+     * @Groups({"film"})
+     *
+     * @Groups({"film"})
      * @ORM\Column(type="date")
      */
     private $date;
 
     /**
+     * @Groups({"film"})
+     *
      * @ORM\Column(type="integer")
      */
     private $budget;
 
     /**
+     * @Groups({"film"})
+     *
      * @ORM\Column(type="integer")
      */
     private $montantRecette;
 
     /**
+     * @Groups({"film"})
+     *
      * @ORM\ManyToOne(targetEntity="Categorie")
      * @ORM\JoinColumn(nullable=true)
      */
     private $categorie;
 
     /**
+     * @Groups({"film"})
+     *
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Personnage")
@@ -57,6 +73,8 @@ class Film
     private $personnages;
 
     /**
+     * @Groups({"film"})
+     *
      * @ORM\ManyToOne(targetEntity="Realisateur")
      * @ORM\JoinColumn(nullable=false)
      */
