@@ -1,3 +1,27 @@
-<p>
-  actors works!
-</p>
+<h1 class="ui header centered">Liste des acteurs</h1>
+
+<hr class="my-4">
+<div class="row">
+    <div class="column">
+        <div class="ui action icon input">
+            <input id="search_busi" type="text" placeholder="Recherche..." name="dataSearch"
+                   ngModel (keyup)="setFilter()">
+        </div>
+    </div>
+</div>
+<table class="ui celled unstackable table">
+    <thead>
+    <tr>
+        <th>Nom de l'acteur</th>
+        <th>Date de naissance</th>
+        <th>Date de décès</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let actor of actors">
+    <tr>
+        <td>{{actor.PrenAct}} {{actor.NomAct}}</td>
+        <td>{{actor.DateNaiss | date:'dd/MM/yyyy'}}</td>
+        <td>{{actor.DateDeces | date:'dd/MM/yyyy'}}</td>
+    </tr>
+    </tbody>
+</table>
