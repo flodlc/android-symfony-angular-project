@@ -1,0 +1,8 @@
+.ui.container {
+    margin: 30px auto!important;
+    width: 50%!important;
+    min-width: 466px!important;
+}
+.ui.vertical.menu {
+    width: 18rem;
+}
