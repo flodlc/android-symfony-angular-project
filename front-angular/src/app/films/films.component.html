@@ -1,0 +1,27 @@
+<h1 class="ui header centered">Liste des films</h1>
+
+<hr class="my-4">
+<div class="row">
+    <div class="column">
+        <div class="ui action icon input">
+            <input id="search_busi" type="text" placeholder="Recherche..." name="dataSearch"
+                   ngModel (keyup)="setFilter()">
+        </div>
+    </div>
+</div>
+<table class="ui celled unstackable table">
+    <thead>
+    <tr>
+        <th>Titre</th>
+        <th>Réalisateur</th>
+        <th>Catégorie</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let film of films">
+    <tr>
+        <td>{{film.Titre}}</td>
+        <td>{{film.Realisateur.NomRea}}</td>
+        <td>{{film.Categorie.LibelleCt}}</td>
+    </tr>
+    </tbody>
+</table>

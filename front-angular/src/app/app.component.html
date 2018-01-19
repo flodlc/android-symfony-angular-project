@@ -1,15 +1,14 @@
 <div class="ui left fixed vertical menu">
     <a class="item ui header">Cinema Epul</a>
-    <a class="item">
+    <a class="item" [routerLink]="['/films']">
         Liste des films
     </a>
-    <a class="item">
+    <a class="item" [routerLink]="['/actors']">
         Liste des acteurs
     </a>
 </div>
 <div class="ui container">
     <div class="ui message">
-        <h1 class="ui header">Bienvenue sur CinemaEpul</h1>
-        <p>Cette application vous permet d'accéder à l'ensemble des films français, ainsi que leurs acteurs.</p>
+        <router-outlet></router-outlet>
     </div>
 </div>
