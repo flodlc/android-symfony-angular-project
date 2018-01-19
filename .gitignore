@@ -1,1 +1,8 @@
 .idea/*
+# compiled output
+/front-angular/dist
+/front-angular/tmp
+/front-angular/out-tsc
+
+# dependencies
+/front-angular/node_modules
