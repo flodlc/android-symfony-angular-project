@@ -1,24 +1,15 @@
 <div class="ui left fixed vertical menu">
-  <a class="item ui header">Cinema Epul</a>
-  <div class="item">
-    <app-history [history]="history"></app-history>
-  </div>
+    <a class="item ui header">Cinema Epul</a>
+    <a class="item">
+        Liste des films
+    </a>
+    <a class="item">
+        Liste des acteurs
+    </a>
 </div>
 <div class="ui container">
-  <div class="ui message">
-    <div class="ui input">
-      <form>
-        <input type="text" [(ngModel)]="url_tmp" name="url" placeholder="Write an url...">
-        <input type="button" (click)="goUrl(url_tmp)" value="Watch the video">
-      </form>
+    <div class="ui message">
+        <h1 class="ui header">Bienvenue sur CinemaEpul</h1>
+        <p>Cette application vous permet d'accéder à l'ensemble des films français, ainsi que leurs acteurs.</p>
     </div>
-    <app-video [url]="url"></app-video>
-    <div *ngIf="url" class="ui green icon button" (click)="addToMarks(url)">
-      <i class="add icon"></i> Add to bookmarks
-    </div>
-  </div>
-</div>
-<div class="ui right fixed vertical menu">
-  <a class="item"><b>Bookmarks</b></a>
-  <app-bookmarks [bookMarks]="bookMarks"></app-bookmarks>
 </div>
