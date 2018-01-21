@@ -64,6 +64,11 @@ class filmController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $filmRepo = $entityManager->getRepository(Film::class);
         $film = $filmRepo->find($id);
+
+        if (!$film) {
+            return new Response(202);
+        }
+
         return new Response($this->serializer->serialize($film, "json", ["groups" => ["film"]]));
     }
 
@@ -79,6 +84,11 @@ class filmController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $filmRepo = $entityManager->getRepository(Film::class);
         $film = $filmRepo->find($id);
+
+        if (!$film) {
+            return new Response(202);
+        }
+
         $entityManager->remove($film);
         $entityManager->flush();
 

@@ -63,6 +63,11 @@ class acteurController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $acteurRepo = $entityManager->getRepository(Acteur::class);
         $acteur = $acteurRepo->find($id);
+
+        if (!$acteur) {
+            return new Response(202);
+        }
+
         return new Response($this->serializer->serialize($acteur, "json", ["groups" => ["acteur"]]));
     }
 
@@ -78,6 +83,11 @@ class acteurController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $acteurRepo = $entityManager->getRepository(Acteur::class);
         $acteur = $acteurRepo->find($id);
+
+        if (!$acteur) {
+            return new Response(202);
+        }
+
         $entityManager->remove($acteur);
         $entityManager->flush();
 
