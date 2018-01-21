@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RealisateurRepository")
@@ -10,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Realisateur
 {
     /**
+     * @Groups({"film"})
+     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -17,11 +21,15 @@ class Realisateur
     private $id;
 
     /**
+     * @Groups({"film"})
+     *
      * @ORM\Column(type="string")
      */
     private $name;
 
     /**
+     * @Groups({"film"})
+     *
      * @ORM\Column(type="string")
      */
     private $prenom;

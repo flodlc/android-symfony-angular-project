@@ -12,6 +12,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class Film
 {
     /**
+     * @Groups({"film"})
+     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")

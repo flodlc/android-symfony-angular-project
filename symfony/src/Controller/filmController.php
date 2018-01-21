@@ -30,18 +30,12 @@ class filmController extends Controller
     private $serializer;
 
     /**
-     * @var EntityManager
-     */
-    private $entityManager;
-
-    /**
      * filmController constructor.
      */
     public function __construct()
     {
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
         $this->serializer = new Serializer([new DateTimeNormalizer("d/m/y"), new ObjectNormalizer($classMetadataFactory)], [new JsonEncoder()]);
-        $this->getDoctrine()->getManager();
     }
 
     /**
@@ -52,7 +46,8 @@ class filmController extends Controller
      */
     public function getFilmsAction()
     {
-        $filmRepo = $this->entityManager->getRepository(Film::class);
+        $entityManager = $this->getDoctrine()->getManager();
+        $filmRepo = $entityManager->getRepository(Film::class);
         $films = $filmRepo->findAll();
         return new Response($this->serializer->serialize($films, "json", ["groups" => ["film"]]));
     }
@@ -66,13 +61,14 @@ class filmController extends Controller
      */
     public function getFilmsByIdAction($id)
     {
-        $filmRepo = $this->entityManager->getRepository(Film::class);
+        $entityManager = $this->getDoctrine()->getManager();
+        $filmRepo = $entityManager->getRepository(Film::class);
         $film = $filmRepo->find($id);
         return new Response($this->serializer->serialize($film, "json", ["groups" => ["film"]]));
     }
 
     /**
-     * @Route("/films/{id}", name="deleteFilmById")
+     * @Route("/film/{id}", name="deleteFilmById")
      * @Method({"DELETE"})
      *
      * @param $id
@@ -80,10 +76,11 @@ class filmController extends Controller
      */
     public function DeleteFilmsByIdAction($id)
     {
-        $filmRepo = $this->entityManager->getRepository(Film::class);
+        $entityManager = $this->getDoctrine()->getManager();
+        $filmRepo = $entityManager->getRepository(Film::class);
         $film = $filmRepo->find($id);
-        $this->entityManager->remove($film);
-        $this->entityManager->flush();
+        $entityManager->remove($film);
+        $entityManager->flush();
 
         return new Response(200);
     }

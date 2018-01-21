@@ -29,18 +29,12 @@ class acteurController extends Controller
     private $serializer;
 
     /**
-     * @var EntityManager
-     */
-    private $entityManager;
-
-    /**
      * ActeurController constructor.
      */
     public function __construct()
     {
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
         $this->serializer = new Serializer([new DateTimeNormalizer("d/m/y"), new ObjectNormalizer($classMetadataFactory)], [new JsonEncoder()]);
-        $this->entityManager = $this->getDoctrine()->getManager();
     }
 
     /**
@@ -51,7 +45,8 @@ class acteurController extends Controller
      */
     public function getActeursAction()
     {
-        $acteurRepo = $this->entityManager->getRepository(Acteur::class);
+        $entityManager = $this->getDoctrine()->getManager();
+        $acteurRepo = $entityManager->getRepository(Acteur::class);
         $acteurs = $acteurRepo->findAll();
         return new Response($this->serializer->serialize($acteurs, "json", ["groups" => ["acteur"]]));
     }
@@ -65,7 +60,8 @@ class acteurController extends Controller
      */
     public function getActeursByIdAction($id)
     {
-        $acteurRepo = $this->entityManager->getRepository(Acteur::class);
+        $entityManager = $this->getDoctrine()->getManager();
+        $acteurRepo = $entityManager->getRepository(Acteur::class);
         $acteur = $acteurRepo->find($id);
         return new Response($this->serializer->serialize($acteur, "json", ["groups" => ["acteur"]]));
     }
@@ -79,10 +75,11 @@ class acteurController extends Controller
      */
     public function DeleteFilmsByIdAction($id)
     {
-        $acteurRepo = $this->entityManager->getRepository(Acteur::class);
+        $entityManager = $this->getDoctrine()->getManager();
+        $acteurRepo = $entityManager->getRepository(Acteur::class);
         $acteur = $acteurRepo->find($id);
-        $this->entityManager->remove($acteur);
-        $this->entityManager->flush();
+        $entityManager->remove($acteur);
+        $entityManager->flush();
 
         return new Response(200);
     }
