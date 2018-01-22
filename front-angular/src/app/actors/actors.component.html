@@ -19,9 +19,14 @@
     </thead>
     <tbody *ngFor="let actor of actors">
     <tr>
-        <td>{{actor.prenom}} {{actor.nom}}</td>
+        <td>
+            <a [routerLink]="['/actor', actor.id]">
+                {{actor.prenom}} {{actor.nom}}
+            </a>
+        </td>
         <td>{{actor.dateNaissance}}</td>
         <td>{{actor.dateDeces}}</td>
+
     </tr>
     </tbody>
 </table>
