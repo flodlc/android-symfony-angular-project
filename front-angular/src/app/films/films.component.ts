@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FilmService} from "../services/film.service";
 import {Film} from "../models/film.model";
+import * as _ from "lodash";
 
 @Component({
     selector: 'app-films',
@@ -8,6 +9,7 @@ import {Film} from "../models/film.model";
     styleUrls: ['./films.component.css']
 })
 export class FilmsComponent implements OnInit {
+    films_all: Film[];
     films: Film[];
     dataSearch: string = '';
 
@@ -16,12 +18,16 @@ export class FilmsComponent implements OnInit {
 
     ngOnInit() {
         this.filmServ.getFilms().subscribe(films => {
+            this.films_all = films;
             this.films = films;
         });
     }
 
     setFilter() {
-
+        this.films = _.filter(this.films_all, function (o) {
+            let reg = new RegExp(this.dataSearch, "i");
+            return (reg.test(o.title) || reg.test(o.categorie.libelleCat) || reg.test(o.realisateur.prenom) || reg.test(o.realisateur.name));
+        }.bind(this));
     }
 
 }

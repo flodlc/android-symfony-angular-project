@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {Routing} from './app.routing';
-
+import { FormsModule } from '@angular/forms';
 
 import {AppComponent} from './app.component';
 import {FilmsComponent} from './films/films.component';
@@ -26,7 +26,8 @@ import {HttpClientModule} from "@angular/common/http";
     imports: [
         BrowserModule,
         Routing,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule
     ],
     providers: [FilmService, ActorService],
     bootstrap: [AppComponent]

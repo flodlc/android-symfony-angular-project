@@ -4,8 +4,8 @@
 <div class="row">
     <div class="column">
         <div class="ui action icon input">
-            <input id="search_busi" type="text" placeholder="Recherche..." name="dataSearch"
-                   ngModel (keyup)="setFilter()">
+            <input type="text" placeholder="Recherche..."
+                   [(ngModel)]="dataSearch" (keyup)="setFilter()">
         </div>
     </div>
 </div>
@@ -17,14 +17,14 @@
         <th>Catégorie</th>
     </tr>
     </thead>
-    <tbody *ngFor="let film of films">
-    <tr>
+    <tbody>
+    <tr *ngFor="let film of films">
         <td>
             <a [routerLink]="['/film', film.id]">
                 {{film.title}}
             </a>
         </td>
-        <td>{{film.realisateur.name}}</td>
+        <td>{{film.realisateur.name}} {{film.realisateur.prenom}}</td>
         <td>{{film.categorie.libelleCat}}</td>
     </tr>
     </tbody>
