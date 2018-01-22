@@ -1,0 +1,14 @@
+<div class="ui left fixed vertical menu">
+    <a class="item ui header">Cinema Epul</a>
+    <a class="item" [routerLink]="['/films']">
+        Liste des films
+    </a>
+    <a class="item" [routerLink]="['/actors']">
+        Liste des acteurs
+    </a>
+</div>
+<div class="ui container">
+    <div class="ui message">
+        <router-outlet></router-outlet>
+    </div>
+</div>
