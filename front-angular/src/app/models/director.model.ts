@@ -1,5 +1,5 @@
 export class Director {
-    constructor(public NoRea?, public NomRea?: string, public PrenRea?: string) {
+    constructor(public id?, public name?: string, public prenom?: string) {
 
     }
 }

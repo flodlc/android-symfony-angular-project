@@ -48,7 +48,8 @@ class acteurController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $acteurRepo = $entityManager->getRepository(Acteur::class);
         $acteurs = $acteurRepo->findAll();
-        return new Response($this->serializer->serialize($acteurs, "json", ["groups" => ["acteur"]]));
+        return new Response($this->serializer->serialize($acteurs, "json", ["groups" => ["acteur"]]),
+            200, ["Access-Control-Allow-Origin" => "*"]);
     }
 
     /**
@@ -68,7 +69,8 @@ class acteurController extends Controller
             return new Response(202);
         }
 
-        return new Response($this->serializer->serialize($acteur, "json", ["groups" => ["acteur"]]));
+        return new Response($this->serializer->serialize($acteur, "json", ["groups" => ["acteur"]]),
+            200, ["Access-Control-Allow-Origin" => "*"]);
     }
 
     /**
@@ -91,6 +93,7 @@ class acteurController extends Controller
         $entityManager->remove($acteur);
         $entityManager->flush();
 
-        return new Response(200);
+        return new Response(200,
+            200, ["Access-Control-Allow-Origin" => "*"]);
     }
 }

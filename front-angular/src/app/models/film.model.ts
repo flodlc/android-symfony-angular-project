@@ -3,9 +3,9 @@ import {Category} from "./category.model";
 import {Character} from "./character.model";
 
 export class Film {
-    constructor(public NoFilm?, public Titre?: string, public Duree?: number, public DateSortie?: String,
-                public Budget?: number, public MontantRecette?: number, public Realisateur?: Director,
-                public Categorie?: Category, public Characters?: Character) {
+    constructor(public id?, public title?: string, public duree?: number, public date?: String,
+                public budget?: number, public montantRecette?: number, public realisateur?: Director,
+                public categorie?: Category, public personnages?: Character) {
 
     }
 }

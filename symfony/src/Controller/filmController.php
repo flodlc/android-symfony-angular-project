@@ -49,7 +49,8 @@ class filmController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $filmRepo = $entityManager->getRepository(Film::class);
         $films = $filmRepo->findAll();
-        return new Response($this->serializer->serialize($films, "json", ["groups" => ["film"]]));
+        return new Response($this->serializer->serialize($films, "json", ["groups" => ["film"]]),
+            200, ["Access-Control-Allow-Origin" => "*"]);
     }
 
     /**
@@ -69,7 +70,8 @@ class filmController extends Controller
             return new Response(202);
         }
 
-        return new Response($this->serializer->serialize($film, "json", ["groups" => ["film"]]));
+        return new Response($this->serializer->serialize($film, "json", ["groups" => ["film"]]),
+            200, ["Access-Control-Allow-Origin" => "*"]);
     }
 
     /**
@@ -92,6 +94,7 @@ class filmController extends Controller
         $entityManager->remove($film);
         $entityManager->flush();
 
-        return new Response(200);
+        return new Response(200,
+            200, ["Access-Control-Allow-Origin" => "*"]);
     }
 }

@@ -19,9 +19,13 @@
     </thead>
     <tbody *ngFor="let film of films">
     <tr>
-        <td>{{film.Titre}}</td>
-        <td>{{film.Realisateur.NomRea}}</td>
-        <td>{{film.Categorie.LibelleCt}}</td>
+        <td>
+            <a [routerLink]="['/film', film.id]">
+                {{film.title}}
+            </a>
+        </td>
+        <td>{{film.realisateur.name}}</td>
+        <td>{{film.categorie.libelleCat}}</td>
     </tr>
     </tbody>
 </table>

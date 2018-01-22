@@ -19,9 +19,9 @@
     </thead>
     <tbody *ngFor="let actor of actors">
     <tr>
-        <td>{{actor.PrenAct}} {{actor.NomAct}}</td>
-        <td>{{actor.DateNaiss | date:'dd/MM/yyyy'}}</td>
-        <td>{{actor.DateDeces | date:'dd/MM/yyyy'}}</td>
+        <td>{{actor.prenom}} {{actor.nom}}</td>
+        <td>{{actor.dateNaissance}}</td>
+        <td>{{actor.dateDeces}}</td>
     </tr>
     </tbody>
 </table>

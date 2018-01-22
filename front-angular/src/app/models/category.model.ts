@@ -1,5 +1,5 @@
 export class Category{
-    constructor(public CodeCat?, public LibelleCt?: string) {
+    constructor(public id?, public libelleCat?: string) {
 
     }
 }

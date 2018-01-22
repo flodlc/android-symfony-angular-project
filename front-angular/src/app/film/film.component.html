@@ -1,3 +1,52 @@
-<p>
-  film works!
-</p>
+<div *ngIf="film">
+    <h1 class="ui header centered">{{film.title}}</h1>
+    <br><br><br>
+    <div class="ui two column grid">
+        <div class="column">
+            <div class="ui relaxed divided list">
+                <div class="item">
+                    <i class="large male middle aligned icon"></i>
+                    <div class="content">
+                        <div class="description">{{film.realisateur.prenom}} {{film.realisateur.name}}</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="large calendar middle aligned icon"></i>
+                    <div class="content">
+                        <div class="description">{{film.date}}</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="large info middle aligned icon"></i>
+                    <div class="content">
+                        <div class="description">{{film.duree}} min.</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="large tag middle aligned icon"></i>
+                    <div class="content">
+                        <div class="description">{{film.categorie.libelleCat}}</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="large money middle aligned icon"></i>
+                    <div class="content">
+                        <div class="description">{{film.budget}}€</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui cards">
+                <div class="card" *ngFor="let character of film.personnages">
+                    <div class="content">
+                        <a [routerLink]="['/actor', character.acteur.id]">
+                            <div class="header">{{character.nomPerso}}</div>
+                            <div class="meta">{{character.acteur.prenom}} {{character.acteur.nom}}</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

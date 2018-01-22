@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FilmService} from "../services/film.service";
 import {Film} from "../models/film.model";
-import { FILMS } from '../mock-films';
 
 @Component({
     selector: 'app-films',
@@ -16,10 +15,9 @@ export class FilmsComponent implements OnInit {
     }
 
     ngOnInit() {
-        /*this.filmServ.getFilms().subscribe(films => {
+        this.filmServ.getFilms().subscribe(films => {
             this.films = films;
-        });*/
-        this.films = FILMS;
+        });
     }
 
     setFilter() {

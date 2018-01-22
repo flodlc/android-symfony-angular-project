@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActorService} from "../services/actor.service";
 import {Actor} from "../models/actor.model";
-import {ACTORS} from "../mock-actors";
 
 @Component({
   selector: 'app-actors',
@@ -16,10 +15,9 @@ export class ActorsComponent implements OnInit {
     }
 
     ngOnInit() {
-        /*this.actorServ.getActors().subscribe(actors => {
+        this.actorServ.getActors().subscribe(actors => {
             this.actors = actors;
-        });*/
-        this.actors = ACTORS;
+        });
     }
 
     setFilter() {
