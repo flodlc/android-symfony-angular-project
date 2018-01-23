@@ -19,7 +19,6 @@ export class FilmFormComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.film);
         this.createForm(this.film);
     }
 
