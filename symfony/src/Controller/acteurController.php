@@ -48,8 +48,7 @@ class acteurController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $acteurRepo = $entityManager->getRepository(Acteur::class);
         $acteurs = $acteurRepo->findAll();
-        return new Response($this->serializer->serialize($acteurs, "json", ["groups" => ["acteur"]]),
-            200, ["Access-Control-Allow-Origin" => "*"]);
+        return new Response($this->serializer->serialize($acteurs, "json", ["groups" => ["acteur"]]));
     }
 
     /**
@@ -69,8 +68,7 @@ class acteurController extends Controller
             return new Response(202);
         }
 
-        return new Response($this->serializer->serialize($acteur, "json", ["groups" => ["acteur"]]),
-            200, ["Access-Control-Allow-Origin" => "*"]);
+        return new Response($this->serializer->serialize($acteur, "json", ["groups" => ["acteur"]]));
     }
 
     /**
@@ -80,7 +78,7 @@ class acteurController extends Controller
      * @param $id
      * @return Response
      */
-    public function DeleteFilmsByIdAction($id)
+    public function DeleteActeurByIdAction($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $acteurRepo = $entityManager->getRepository(Acteur::class);
@@ -93,7 +91,6 @@ class acteurController extends Controller
         $entityManager->remove($acteur);
         $entityManager->flush();
 
-        return new Response(200,
-            200, ["Access-Control-Allow-Origin" => "*"]);
+        return new Response(200);
     }
 }
