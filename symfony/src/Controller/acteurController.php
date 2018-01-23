@@ -9,6 +9,8 @@
 namespace App\Controller;
 
 use App\Entity\Acteur;
+use App\Entity\Film;
+use App\Entity\Personnage;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -82,10 +84,17 @@ class acteurController extends Controller
     {
         $entityManager = $this->getDoctrine()->getManager();
         $acteurRepo = $entityManager->getRepository(Acteur::class);
+        $persoRepo = $entityManager->getRepository(Personnage::class);
+        $filmRepo = $entityManager->getRepository(Film::class);
         $acteur = $acteurRepo->find($id);
 
         if (!$acteur) {
             return new Response(202);
+        }
+
+        $persos = $persoRepo->findBy(['acteur' => $acteur]);
+        foreach ($persos as $perso) {
+            $entityManager->remove($perso);
         }
 
         $entityManager->remove($acteur);

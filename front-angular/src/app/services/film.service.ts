@@ -22,6 +22,11 @@ export class FilmService {
 
     delete(id: number) {
         const url = environment.apiUrl + 'film/' + id;
+        let headers = {
+            headers : {
+                'Access-Control-Allow-Origin': '*'
+            }
+        };
         return this.http.delete(url);
     }
 }
