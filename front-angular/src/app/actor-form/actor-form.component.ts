@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {Actor} from "../models/actor.model";
 import {ActorService} from "../services/actor.service";
 import {Router} from "@angular/router";
@@ -9,11 +9,18 @@ import {Router} from "@angular/router";
     templateUrl: './actor-form.component.html',
     styleUrls: ['./actor-form.component.css']
 })
-export class ActorFormComponent {
+export class ActorFormComponent implements OnInit {
     ActorForm: FormGroup;
+    @Input() actor?: Actor;
 
     constructor(private fb: FormBuilder, private actorServ: ActorService, private router: Router) {
-        this.createForm();
+    }
+
+    ngOnInit() {
+        console.log(this.actor);
+        if (this.actor.dateDeces == "30/11/-0001")
+            this.actor.dateDeces = "";
+        this.createForm(this.actor);
     }
 
     createForm(actor?: Actor) {
@@ -21,7 +28,6 @@ export class ActorFormComponent {
             this.ActorForm = this.fb.group(actor);
         else
             this.ActorForm = this.fb.group(new Actor());
-
     }
 
     submit() {

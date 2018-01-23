@@ -1,5 +1,3 @@
-<h2>Hero Detail</h2>
-<h3><i>A FormGroup with multiple FormControls</i></h3>
 <form [formGroup]="ActorForm">
     <div class="form-group">
         <label class="center-block">Prénom:
@@ -13,18 +11,15 @@
     </div>
     <div class="form-group">
         <label class="center-block">Date de naissance:
-            <input type="date" class="form-control" formControlName="dateNaissance" required>
+            <input class="form-control" formControlName="dateNaissance" required placeholder="09/06/2000">
         </label>
     </div>
     <div class="form-group">
         <label class="center-block">Date de décès:
-            <input type="date" class="form-control" formControlName="dateDeces">
+            <input class="form-control" formControlName="dateDeces" placeholder="09/06/2000">
         </label>
     </div>
     <div class="form-group">
             <input type="submit" class="ui button summary" (click)="submit()" value="Valider">
     </div>
 </form>
-
-
-<p>Form value: {{ ActorForm.value | json }}</p>

@@ -29,4 +29,9 @@ export class FilmService {
         };
         return this.http.delete(url);
     }
+
+    postFilm(film: Film): Observable<Film> {
+        const url = environment.apiUrl + 'film';
+        return this.http.post(url, film);
+    }
 }
