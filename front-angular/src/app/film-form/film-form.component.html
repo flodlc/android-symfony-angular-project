@@ -1,0 +1,30 @@
+<form [formGroup]="FilmForm">
+  <div class="form-group">
+    <label class="center-block">Titre:
+      <input class="form-control" formControlName="title" required>
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Duree:
+      <input type="number" class="form-control" formControlName="duree" required>
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Budget:
+      <input type="number" class="form-control" formControlName="budget" required>
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Date:
+      <input class="form-control" formControlName="date" required>
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Montant recette:
+      <input class="form-control" formControlName="montantRecette" required>
+    </label>
+  </div>
+  <div class="form-group">
+    <input type="submit" class="ui button summary" (click)="submit()" value="Valider">
+  </div>
+</form>
