@@ -2,9 +2,9 @@
 Web api with Synfony and a desktop client with angular and a mobile client on android.
 
 
-##API Doc
+## API Doc
 
-###Films:
+### Films:
 
 - GET /films  
 return all films.  
@@ -18,7 +18,14 @@ Status code : 200 or 202 if not found
 Delete one film by id.  
 Status code : 200 or 202 if not found
 
-###Acteurs:
+#### TODO
+- POST /film  
+If id is null, add a film, else edit a film
+return : film created/edited
+Status code : 200 or 202 if not found
+
+
+### Acteurs:
 
 - GET /acteurs  
 return all actors  
@@ -28,6 +35,12 @@ Status code : 200
 Return one actor by id  
 Status code : 200 or 202 if not found
 
-- GET /acteurs  
+- DELETE /acteur  
 Delete one actor by id  
+Status code : 200 or 202 if not found
+
+#### TODO
+- POST /acteur  
+If id is null, add an actor, else edit an actor
+return : acteur created/edited
 Status code : 200 or 202 if not found
