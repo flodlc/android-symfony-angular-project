@@ -15,6 +15,7 @@
         <th>Titre</th>
         <th>Réalisateur</th>
         <th>Catégorie</th>
+        <th>Suppresion</th>
     </tr>
     </thead>
     <tbody>
@@ -26,6 +27,9 @@
         </td>
         <td>{{film.realisateur.name}} {{film.realisateur.prenom}}</td>
         <td>{{film.categorie.libelleCat}}</td>
+        <td>
+            <i (click)="delete(film.id)" class="remove icon"></i>
+        </td>
     </tr>
     </tbody>
 </table>

@@ -30,4 +30,15 @@ export class FilmsComponent implements OnInit {
         }.bind(this));
     }
 
+    delete(id) {
+        this.filmServ.delete(id).subscribe(data => {
+            this.films_all = _.filter(this.films_all, function (o) {
+                let reg = new RegExp(id, "i");
+                return (!reg.test(o.id));
+            }.bind(this));
+            this.films = this.films_all;
+            this.dataSearch = "";
+        })
+    }
+
 }

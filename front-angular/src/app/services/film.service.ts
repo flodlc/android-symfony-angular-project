@@ -19,4 +19,9 @@ export class FilmService {
         const url = environment.apiUrl + 'film/' + id;
         return this.http.get(url).map(film => film as Film);
     }
+
+    delete(id: number) {
+        const url = environment.apiUrl + 'film/' + id;
+        return this.http.delete(url);
+    }
 }

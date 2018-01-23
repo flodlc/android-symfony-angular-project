@@ -4,8 +4,8 @@
 <div class="row">
     <div class="column">
         <div class="ui action icon input">
-            <input id="search_busi" type="text" placeholder="Recherche..." name="dataSearch"
-                   ngModel (keyup)="setFilter()">
+            <input type="text" placeholder="Recherche..."
+                   [(ngModel)]="dataSearch" (keyup)="setFilter()">
         </div>
     </div>
 </div>
@@ -15,6 +15,7 @@
         <th>Nom de l'acteur</th>
         <th>Date de naissance</th>
         <th>Date de décès</th>
+        <th>Supprimer</th>
     </tr>
     </thead>
     <tbody *ngFor="let actor of actors">
@@ -26,6 +27,9 @@
         </td>
         <td>{{actor.dateNaissance}}</td>
         <td>{{actor.dateDeces}}</td>
+        <td>
+            <i (click)="delete(actor.id)" class="remove icon"></i>
+        </td>
 
     </tr>
     </tbody>

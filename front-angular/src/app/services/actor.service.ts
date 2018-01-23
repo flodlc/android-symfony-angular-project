@@ -25,4 +25,9 @@ export class ActorService {
         const url = environment.apiUrl + 'acteur/' + id + '/films';
         return this.http.get(url).map(films => films as Film[]);
     }
+
+    delete(id: number) {
+        const url = environment.apiUrl + 'acteur/' + id;
+        return this.http.delete(url);
+    }
 }
