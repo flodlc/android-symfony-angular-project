@@ -4,6 +4,7 @@ import {ActorsComponent} from "./actors/actors.component";
 import {FilmComponent} from "./film/film.component";
 import {ActorComponent} from "./actor/actor.component";
 import {IndexComponent} from "./index/index.component";
+import {ActorFormComponent} from "./actor-form/actor-form.component";
 
 const APP_ROUTES: Routes = [
     {path: 'index', component: IndexComponent},
@@ -11,6 +12,7 @@ const APP_ROUTES: Routes = [
     {path: 'actors', component: ActorsComponent},
     {path: 'film/:id', component: FilmComponent},
     {path: 'actor/:id', component: ActorComponent},
+    {path: 'actor/:id/edit', component: ActorFormComponent},
     {path: '**', redirectTo: 'index'}
 ];
 

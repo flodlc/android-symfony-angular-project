@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {Routing} from './app.routing';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
 import {FilmsComponent} from './films/films.component';
@@ -12,6 +12,7 @@ import { IndexComponent } from './index/index.component';
 import {FilmService} from "./services/film.service";
 import {ActorService} from "./services/actor.service";
 import {HttpClientModule} from "@angular/common/http";
+import { ActorFormComponent } from './actor-form/actor-form.component';
 
 
 @NgModule({
@@ -21,13 +22,15 @@ import {HttpClientModule} from "@angular/common/http";
         ActorsComponent,
         FilmComponent,
         ActorComponent,
-        IndexComponent
+        IndexComponent,
+        ActorFormComponent
     ],
     imports: [
         BrowserModule,
         Routing,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [FilmService, ActorService],
     bootstrap: [AppComponent]
