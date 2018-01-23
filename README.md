@@ -44,3 +44,20 @@ Status code : 200 or 202 if not found
 If id is null, add an actor, else edit an actor
 return : acteur created/edited
 Status code : 200 or 202 if not found
+
+
+
+
+### Categories:
+#### TODO
+
+- GET /categories  
+return all categories  
+Status code : 200
+
+### Realisateur:
+#### TODO
+
+- GET /realisateurs  
+return all realisateurs  
+Status code : 200
