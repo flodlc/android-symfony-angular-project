@@ -30,4 +30,9 @@ export class ActorService {
         const url = environment.apiUrl + 'acteur/' + id;
         return this.http.delete(url);
     }
+
+    postActor(actor: Actor): Observable<Actor> {
+        const url = environment.apiUrl + 'acteur';
+        return this.http.post(url, actor);
+    }
 }

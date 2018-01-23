@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Actor} from "../models/actor.model";
 import {ActorService} from "../services/actor.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-actor-form',
@@ -11,7 +12,7 @@ import {ActorService} from "../services/actor.service";
 export class ActorFormComponent {
     ActorForm: FormGroup;
 
-    constructor(private fb: FormBuilder, private actorServ: ActorService) {
+    constructor(private fb: FormBuilder, private actorServ: ActorService, private router: Router) {
         this.createForm();
     }
 
@@ -24,7 +25,12 @@ export class ActorFormComponent {
     }
 
     submit() {
-        if (this.ActorForm.get('nom') && this.ActorForm.get('prenom') && this.ActorForm.get('dateNaissance'))
-            console.log(this.ActorForm.getRawValue());
+        if (this.ActorForm.get('nom').status == 'VALID'
+            && this.ActorForm.get('prenom').status == 'VALID'
+            && this.ActorForm.get('dateNaissance').status == 'VALID') {
+            this.actorServ.postActor(this.ActorForm.getRawValue()).subscribe(actor => {
+                this.router.navigate(['/actor/' + actor.id]);
+            });
+        }
     }
 }
