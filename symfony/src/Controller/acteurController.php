@@ -12,7 +12,9 @@ use App\Entity\Acteur;
 use App\Entity\Film;
 use App\Entity\Personnage;
 use Doctrine\Common\Annotations\AnnotationReader;
+use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -36,7 +38,7 @@ class acteurController extends Controller
     public function __construct()
     {
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
-        $this->serializer = new Serializer([new DateTimeNormalizer("d/m/Y"), new ObjectNormalizer($classMetadataFactory)], [new JsonEncoder()]);
+        $this->serializer = new Serializer([new DateTimeNormalizer("d/m/y"), new ObjectNormalizer($classMetadataFactory)], [new JsonEncoder()]);
     }
 
     /**
@@ -101,5 +103,33 @@ class acteurController extends Controller
         $entityManager->flush();
 
         return new Response(200);
+    }
+
+    /**
+     * @Route("/acteur", name="postActeur")
+     * @Method({"POST"})
+     *
+     * @return Response
+     */
+    public function PostActeurAction(Request $request)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        /** @var $receivedFilm Film */
+        $receivedActeur = $this->serializer->denormalize($this->serializer->decode($request->getContent(), "json"), Acteur::class);
+
+        if ($receivedActeur->getId()) {
+            try {
+                /** @var $film Film */
+                $entityManager->merge($receivedActeur);
+            } catch (EntityNotFoundException $e) {
+                return new Response("", 202);
+            }
+        } else {
+            $entityManager->persist($receivedActeur);
+        }
+
+        $entityManager->flush();
+        return new Response($this->serializer->serialize($receivedActeur, "json", ["groups" => ["film"]]));
     }
 }

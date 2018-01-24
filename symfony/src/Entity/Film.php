@@ -28,7 +28,7 @@ class Film
 
     /**
      * @Groups({"film"})
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $duree;
 
@@ -38,49 +38,49 @@ class Film
      * @Groups({"film"})
      *
      * @Groups({"film"})
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $date;
 
     /**
      * @Groups({"film"})
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $budget;
 
     /**
      * @Groups({"film"})
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $montantRecette;
 
     /**
      * @Groups({"film"})
      *
-     * @ORM\ManyToOne(targetEntity="Categorie")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\ManyToOne(targetEntity="Categorie", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true, nullable=true)
      */
     private $categorie;
 
     /**
      * @Groups({"film"})
      *
-     * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Personnage")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\ManyToMany(targetEntity="Personnage", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true, nullable=true)
      */
     private $personnages;
 
     /**
      * @Groups({"film"})
      *
-     * @ORM\ManyToOne(targetEntity="Realisateur")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="Realisateur", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
     private $realisateur;
+
 
     /**
      * @return int
@@ -143,6 +143,12 @@ class Film
      */
     public function setDate($date)
     {
+        if (is_string($date)) {
+            $date = \DateTime::createFromFormat("d/m/y", $date);
+        }
+        if (!$date) {
+            $date = null;
+        }
         $this->date = $date;
     }
 
@@ -227,10 +233,16 @@ class Film
     /**
      * @param Realisateur $realisateur
      */
-    public function setRealisateur($realisateur)
+    public function setRealisateur(Realisateur $realisateur)
     {
         $this->realisateur = $realisateur;
     }
 
-
+    /**
+     * @param ArrayCollection $personnages
+     */
+    public function setPersonnages($personnages)
+    {
+        $this->personnages = $personnages;
+    }
 }

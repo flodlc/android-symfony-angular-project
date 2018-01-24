@@ -29,7 +29,7 @@ class Personnage
     /**
      * @Groups({"film"})
      *
-     * @ORM\ManyToOne(targetEntity="Acteur")
+     * @ORM\ManyToOne(targetEntity="Acteur", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $acteur;
@@ -77,7 +77,7 @@ class Personnage
     /**
      * @param Acteur $acteur
      */
-    public function setActeur($acteur)
+    public function setActeur(Acteur $acteur)
     {
         $this->acteur = $acteur;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -22,28 +23,28 @@ class Acteur
     /**
      * @Groups({"film", "acteur"})
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $nom;
 
     /**
      * @Groups({"film", "acteur"})
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $prenom;
 
     /**
      * @Groups({"film", "acteur"})
      *
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $dateNaissance;
 
     /**
      * @Groups({"film", "acteur"})
      *
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $dateDeces;
 
@@ -108,6 +109,12 @@ class Acteur
      */
     public function setDateNaissance($dateNaissance)
     {
+        if (is_string($dateNaissance)) {
+            $dateNaissance = DateTime::createFromFormat("d/m/y", $dateNaissance);
+        }
+        if (!$dateNaissance) {
+            $dateDeces = null;
+        }
         $this->dateNaissance = $dateNaissance;
     }
 
@@ -124,6 +131,12 @@ class Acteur
      */
     public function setDateDeces($dateDeces)
     {
+        if (is_string($dateDeces)) {
+            $dateDeces = DateTime::createFromFormat("d/m/y", $dateDeces);
+        }
+        if (!$dateDeces) {
+            $dateDeces = null;
+        }
         $this->dateDeces = $dateDeces;
     }
 }

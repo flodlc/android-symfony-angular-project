@@ -18,7 +18,6 @@ Status code : 200 or 202 if not found
 Delete one film by id.  
 Status code : 200 or 202 if not found
 
-#### TODO
 - POST /film  
 If id is null, add a film, else edit a film
 return : film created/edited
@@ -39,7 +38,6 @@ Status code : 200 or 202 if not found
 Delete one actor by id  
 Status code : 200 or 202 if not found
 
-#### TODO
 - POST /acteur  
 If id is null, add an actor, else edit an actor
 return : acteur created/edited
@@ -56,7 +54,6 @@ return all categories
 Status code : 200
 
 ### Realisateur:
-#### TODO
 
 - GET /realisateurs  
 return all realisateurs  

@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-    apiUrl: 'http://cinemaepul/',
+    apiUrl: 'http://localhost:8000/',
 };

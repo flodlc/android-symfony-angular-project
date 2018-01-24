@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class Realisateur
 {
     /**
-     * @Groups({"film"})
+     * @Groups({"film", "realisateur"})
      *
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -21,14 +21,14 @@ class Realisateur
     private $id;
 
     /**
-     * @Groups({"film"})
+     * @Groups({"film", "realisateur"})
      *
      * @ORM\Column(type="string")
      */
     private $name;
 
     /**
-     * @Groups({"film"})
+     * @Groups({"film", "realisateur"})
      *
      * @ORM\Column(type="string")
      */

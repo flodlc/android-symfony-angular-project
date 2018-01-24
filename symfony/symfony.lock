@@ -182,6 +182,9 @@
     "symfony/property-access": {
         "version": "v4.0.3"
     },
+    "symfony/property-info": {
+        "version": "v4.0.3"
+    },
     "symfony/routing": {
         "version": "4.0",
         "recipe": {
