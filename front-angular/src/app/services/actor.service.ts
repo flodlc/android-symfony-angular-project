@@ -22,7 +22,7 @@ export class ActorService {
     }
 
     getActorFilms(id: number): Observable<Film[]> {
-        const url = environment.apiUrl + 'acteur/' + id + '/films';
+        const url = environment.apiUrl + 'films?acteur=' + id;
         return this.http.get(url).map(films => films as Film[]);
     }
 
@@ -32,6 +32,8 @@ export class ActorService {
     }
 
     postActor(actor: Actor): Observable<Actor> {
+        if (actor.dateDeces == null)
+            actor.dateDeces = "null";
         const url = environment.apiUrl + 'acteur';
         return this.http.post(url, actor);
     }

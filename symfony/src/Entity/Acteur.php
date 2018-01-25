@@ -110,7 +110,7 @@ class Acteur
     public function setDateNaissance($dateNaissance)
     {
         if (is_string($dateNaissance)) {
-            $dateNaissance = DateTime::createFromFormat("d/m/y", $dateNaissance);
+            $dateNaissance = DateTime::createFromFormat("d/m/Y", $dateNaissance);
         }
         if (!$dateNaissance) {
             $dateDeces = null;
@@ -132,7 +132,7 @@ class Acteur
     public function setDateDeces($dateDeces)
     {
         if (is_string($dateDeces)) {
-            $dateDeces = DateTime::createFromFormat("d/m/y", $dateDeces);
+            $dateDeces = DateTime::createFromFormat("d/m/Y", $dateDeces);
         }
         if (!$dateDeces) {
             $dateDeces = null;

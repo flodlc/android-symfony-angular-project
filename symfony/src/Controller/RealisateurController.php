@@ -37,7 +37,7 @@ class RealisateurController extends Controller
     public function __construct()
     {
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
-        $this->serializer = new Serializer([new DateTimeNormalizer("d/m/y"), new ObjectNormalizer($classMetadataFactory,
+        $this->serializer = new Serializer([new DateTimeNormalizer("d/m/Y"), new ObjectNormalizer($classMetadataFactory,
             null, null, new ReflectionExtractor()), new ArrayDenormalizer()], [new JsonEncoder()]);
     }
 

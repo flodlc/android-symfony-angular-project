@@ -6,11 +6,13 @@ import {Film} from "../models/film.model";
 import {environment} from "../../environments/environment";
 import {Category} from "../models/category.model";
 import {Director} from "../models/director.model";
+import {Character} from "../models/character.model";
 
 @Injectable()
 export class FilmService {
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+    }
 
     getFilms(): Observable<Film[]> {
         const url = environment.apiUrl + 'films';
@@ -34,16 +36,17 @@ export class FilmService {
 
     delete(id: number) {
         const url = environment.apiUrl + 'film/' + id;
-        let headers = {
-            headers : {
-                'Access-Control-Allow-Origin': '*'
-            }
-        };
         return this.http.delete(url);
     }
 
     postFilm(film: Film): Observable<Film> {
         const url = environment.apiUrl + 'film';
+        if (film.personnages === null)
+            film.personnages = [];
+        /*if (film.personnages.length === undefined) {
+            let persos = film.personnages;
+            film.personnages = [persos];
+        }*/
         return this.http.post(url, film);
     }
 }

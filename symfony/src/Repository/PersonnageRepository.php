@@ -13,16 +13,20 @@ class PersonnageRepository extends ServiceEntityRepository
         parent::__construct($registry, Personnage::class);
     }
 
-    /*
-    public function findBySomething($value)
+
+    public function findByActeur($id)
     {
-        return $this->createQueryBuilder('p')
-            ->where('p.something = :value')->setParameter('value', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+        $qb = $this->createQueryBuilder('a');
+
+        $qb
+            ->where('a.acteur = :id')
+            ->setParameter('id', $id)
+        ;
+
+        return $qb
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
-    */
+
 }

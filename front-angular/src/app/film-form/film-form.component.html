@@ -16,30 +16,40 @@
     </div>
     <div class="form-group field">
         <label>Date
-            <input class="form-control" formControlName="date" required placeholder="09/06/2000">
+            <input class="form-control" formControlName="date" required placeholder="dd/mm/aaaa">
         </label>
     </div>
     <div class="form-group field">
         <label>Montant recette (€)
-            <input class="form-control" formControlName="montantRecette" required>
+            <input type="number" class="form-control" formControlName="montantRecette" required>
         </label>
     </div>
-    <div class="form-group field">
+    <div *ngIf="directors" class="form-group field">
         <label>Réalisateur
-            <select class="form-control" formControlName="realisateur" required>
-                <option *ngFor="let director of directors" value="{{director.id}}"
-                        [selected]="film.id && director.id == film.realisateur.id">{{director.prenom}} {{director.name}}</option>
+            <select [compareWith]="whichOne" class="form-control" formControlName="realisateur" required>
+                <option *ngFor="let director of directors" [ngValue]="director">
+                    {{director.prenom}} {{director.name}}
+                </option>
             </select>
         </label>
     </div>
-    <div class="form-group field">
-        <label>Catégorie 
-            <select class="form-control" formControlName="categorie" required>
-                <option *ngFor="let category of categories" value="{{category.id}}"
-                [selected]="film.id && category.id == film.categorie.id">{{category.libelleCat}}</option>
+    <div *ngIf="categories" class="form-group field">
+        <label>Catégorie
+            <select [compareWith]="whichOne" class="form-control" formControlName="categorie" required>
+                <option *ngFor="let category of categories" [ngValue]="category">
+                    {{category.libelleCat}}
+                </option>
             </select>
         </label>
     </div>
+    <div *ngIf="film" class="form-group field">
+        <label>Personnages
+            <select multiple [compareWith]="whichOne" class="ui fluid dropdown" formControlName="personnages">
+                <option *ngFor="let personnage of film.personnages" [ngValue]="personnage">{{personnage.nomPerso}}</option>
+            </select>
+        </label>
+    </div>
+
     <div class="form-group field">
         <input type="submit" class="ui button summary" (click)="submit()" value="Valider">
     </div>
