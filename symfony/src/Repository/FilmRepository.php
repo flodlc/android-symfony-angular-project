@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Film;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\AST\Join;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class FilmRepository extends ServiceEntityRepository
@@ -13,16 +14,16 @@ class FilmRepository extends ServiceEntityRepository
         parent::__construct($registry, Film::class);
     }
 
-    /*
-    public function findBySomething($value)
+
+    public function findFilmByPerso($id_perso)
     {
-        return $this->createQueryBuilder('f')
-            ->where('f.something = :value')->setParameter('value', $value)
-            ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        $result = $this->createQueryBuilder('film')
+            ->join('film.personnages', 'personnage')
+            ->addSelect('personnage')
+            ->where('personnage.id = :id')
+            ->setParameter('id', $id_perso)
+            ->getQuery()->getArrayResult()
         ;
+        return $result;
     }
-    */
 }

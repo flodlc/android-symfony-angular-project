@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Acteur;
 use App\Entity\Categorie;
 use App\Entity\Film;
 use App\Entity\Personnage;
@@ -52,10 +53,27 @@ class filmController extends Controller
      *
      * @return Response
      */
-    public function getFilmsAction()
+    public function getFilmsAction(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
+        $acteurRepo = $entityManager->getRepository(Acteur::class);
+        $persoRepo = $entityManager->getRepository(Personnage::class);
         $filmRepo = $entityManager->getRepository(Film::class);
+        if ($id_acteur = $request->get('acteur')) {
+            if (!is_numeric($id_acteur))
+                return new Response("Aucun acteur", 404);
+            $acteur = $acteurRepo->find($id_acteur);
+            if (!$acteur)
+                return new Response("Aucun acteur", 404);
+            $persos = $persoRepo->findByActeur($acteur->getId());
+            if (!$persos)
+                return new Response("Aucun film", 404);
+            $films = [];
+            foreach ($persos as $perso) {
+                $films[] = $filmRepo->findFilmByPerso($perso->getId());
+            }
+            return new Response($this->serializer->serialize($films, "json", ["groups" => ["film"]]));
+        }
         $films = $filmRepo->findAll();
         return new Response($this->serializer->serialize($films, "json", ["groups" => ["film"]]));
     }
@@ -132,6 +150,7 @@ class filmController extends Controller
             $receivedFilm->setCategorie($categorie);
 
             $persos = [];
+
             foreach ($receivedFilm->getPersonnages() ?? [] as $perso) {
                 $persos[] = $entityManager->getRepository(Personnage::class)->find($perso->getId());
             }
