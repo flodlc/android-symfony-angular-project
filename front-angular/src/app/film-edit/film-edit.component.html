@@ -1,10 +1,14 @@
-<a [routerLink]="['/film', film.id]" style="float: left">
-    <button class="ui left labeled icon primary button">
-        <i class="left arrow icon"></i>
-        Retour à la page du film
-    </button>
-</a>
-<br><br>
-<h1 class="ui inverted header centered">Modifier un film</h1>
-<h2 class="ui inverted header" *ngIf="film">{{film.title}}</h2>
-<app-film-form  [film]="film"  *ngIf="film"></app-film-form>
+<div *ngIf="film" class="ui text container">
+    <div class="ui message">
+        <a [routerLink]="['/film', film.id]" style="float: left">
+            <button class="ui left labeled icon primary button">
+                <i class="left arrow icon"></i>
+                Retour à la page du film
+            </button>
+        </a>
+        <br><br>
+        <h1 class="ui inverted header centered">Modifier un film</h1>
+        <h2 class="ui inverted header" *ngIf="film">{{film.title}}</h2>
+        <app-film-form [film]="film" *ngIf="film"></app-film-form>
+    </div>
+</div>

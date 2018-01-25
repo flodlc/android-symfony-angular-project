@@ -1,39 +1,43 @@
-<h1 class="ui inverted header centered">Liste des films</h1>
+<div *ngIf="films" class="ui text container">
+    <div class="ui message">
+        <h1 class="ui header centered">Liste des films</h1>
 
-<hr class="my-4">
-<a class="ui button huge primary" [routerLink]="['/film/add']">
-    Ajouter un film
-</a>
-<hr class="my-4">
-<div class="row">
-    <div class="column">
-        <div class="ui action icon input">
-            <input type="text" placeholder="Recherche..."
-                   [(ngModel)]="dataSearch" (keyup)="setFilter()">
+        <hr class="my-4">
+        <a class="ui button huge primary" [routerLink]="['/film/add']">
+            Ajouter un film
+        </a>
+        <hr class="my-4">
+        <div class="row">
+            <div class="column">
+                <div class="ui action icon input">
+                    <input type="text" placeholder="Recherche..."
+                           [(ngModel)]="dataSearch" (keyup)="setFilter()">
+                </div>
+            </div>
         </div>
+        <table class="ui celled unstackable table">
+            <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Réalisateur</th>
+                <th>Catégorie</th>
+                <th>Suppresion</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let film of films">
+                <td>
+                    <a [routerLink]="['/film', film.id]">
+                        {{film.title}}
+                    </a>
+                </td>
+                <td>{{film.realisateur.name}} {{film.realisateur.prenom}}</td>
+                <td>{{film.categorie.libelleCat}}</td>
+                <td>
+                    <i (click)="delete(film.id)" class="remove icon"></i>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
-<table class="ui celled unstackable table">
-    <thead>
-    <tr>
-        <th>Titre</th>
-        <th>Réalisateur</th>
-        <th>Catégorie</th>
-        <th>Suppresion</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let film of films">
-        <td>
-            <a [routerLink]="['/film', film.id]">
-                {{film.title}}
-            </a>
-        </td>
-        <td>{{film.realisateur.name}} {{film.realisateur.prenom}}</td>
-        <td>{{film.categorie.libelleCat}}</td>
-        <td>
-            <i (click)="delete(film.id)" class="remove icon"></i>
-        </td>
-    </tr>
-    </tbody>
-</table>
