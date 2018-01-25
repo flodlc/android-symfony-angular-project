@@ -137,6 +137,6 @@ class filmController extends Controller
         }
 
         $entityManager->flush();
-        return new Response($this->serializer->serialize($receivedFilm, "json", ["groups" => ["acteur"]]));
+        return new Response($this->serializer->serialize($receivedFilm, "json", ["groups" => ["film"]]));
     }
 }

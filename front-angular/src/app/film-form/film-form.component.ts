@@ -7,11 +7,12 @@ import {Film} from "../models/film.model";
 import {FilmService} from "../services/film.service";
 import {Category} from "../models/category.model";
 import {Director} from "../models/director.model";
+import {Character} from "../models/character.model";
 
 @Component({
-  selector: 'app-film-form',
-  templateUrl: './film-form.component.html',
-  styleUrls: ['./film-form.component.css']
+    selector: 'app-film-form',
+    templateUrl: './film-form.component.html',
+    styleUrls: ['./film-form.component.css']
 })
 export class FilmFormComponent implements OnInit {
     FilmForm: FormGroup;
@@ -30,11 +31,12 @@ export class FilmFormComponent implements OnInit {
             this.directors = directors;
         });
         this.createForm(this.film);
+        console.log(this.film.personnages);
     }
 
-    createForm(actor?: Actor) {
-        if (actor)
-            this.FilmForm = this.fb.group(actor);
+    createForm(film?: Film) {
+        if (film)
+            this.FilmForm = this.fb.group(film);
         else
             this.FilmForm = this.fb.group(new Film());
     }
@@ -46,11 +48,15 @@ export class FilmFormComponent implements OnInit {
             this.FilmForm.get('date').status == 'VALID' &&
             this.FilmForm.get('montantRecette').status == 'VALID' &&
             this.FilmForm.get('realisateur').status == 'VALID' &&
-            this.FilmForm.get('categorie').status == 'VALID') {
-            console.log(this.FilmForm.getRawValue());
-            /*this.filmServ.postFilm(this.FilmForm.getRawValue()).subscribe(film => {
+            this.FilmForm.get('categorie').status == 'VALID' &&
+            this.FilmForm.get('personnages').status == 'VALID') {
+            this.filmServ.postFilm(this.FilmForm.getRawValue()).subscribe(film => {
                 this.router.navigate(['/film/' + film.id]);
-            });*/
+            });
         }
+    }
+
+    whichOne(item1, item2){
+        return item1.id == item2.id;
     }
 }
