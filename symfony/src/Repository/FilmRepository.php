@@ -19,10 +19,15 @@ class FilmRepository extends ServiceEntityRepository
     {
         $result = $this->createQueryBuilder('film')
             ->join('film.personnages', 'personnage')
+            ->join('film.realisateur', 'realisateur')
+            ->join('film.categorie', 'categorie')
             ->addSelect('personnage')
+            ->addSelect('realisateur')
+            ->addSelect('categorie')
             ->where('personnage.id = :id')
             ->setParameter('id', $id_perso)
-            ->getQuery()->getArrayResult()
+            ->getQuery()
+            ->getResult()
         ;
         return $result;
     }
