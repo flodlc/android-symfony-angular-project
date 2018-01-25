@@ -27,7 +27,7 @@ class FilmRepository extends ServiceEntityRepository
             ->where('personnage.id = :id')
             ->setParameter('id', $id_perso)
             ->getQuery()
-            ->getResult()
+            ->getArrayResult()
         ;
         return $result;
     }

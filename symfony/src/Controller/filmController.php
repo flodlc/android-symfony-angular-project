@@ -70,7 +70,9 @@ class filmController extends Controller
                 return new Response("Aucun film", 404);
             $films = [];
             foreach ($persos as $perso) {
-                $films[] = $filmRepo->findFilmByPerso($perso->getId());
+                $f_tmp = $filmRepo->findFilmByPerso($perso->getId());
+                if ($f_tmp)
+                    $films[] = $f_tmp[0];
             }
             return new Response($this->serializer->serialize($films, "json", ["groups" => ["film"]]));
         }

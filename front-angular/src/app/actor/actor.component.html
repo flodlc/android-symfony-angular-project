@@ -1,32 +1,40 @@
 <div *ngIf="actor">
-  <h1 class="ui header centered">{{actor.prenom}} {{actor.nom}}</h1>
-  <br><br><br>
-  <div class="ui two column grid">
-    <div class="column">
-      <div class="ui relaxed divided list">
-        <div class="item">
-          <i class="large calendar middle aligned icon"></i>
-          <div class="content">
-            <div class="description">{{actor.dateNaissance}} - {{actor?.dateDeces}}</div>
-          </div>
+    <a  [routerLink]="['/actors']">
+        <button class="ui left labeled icon button">
+            <i class="left arrow icon"></i>
+            Retour à la liste des acteurs
+        </button>
+    </a>
+    <h1 class="ui header centered">{{actor.prenom}} {{actor.nom}}</h1>
+    <br><br><br>
+    <div class="ui two column grid">
+        <div class="column">
+            <div class="ui relaxed divided list">
+                <div class="item">
+                    <i class="large calendar middle aligned icon"></i>
+                    <div class="content">
+                        <div class="description">{{actor.dateNaissance}} - {{actor?.dateDeces}}</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <a [routerLink]="['/actor/edit', actor.id]">
+                        <button class="ui button success">Modifier</button>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="item">
-          <a [routerLink]="['/actor/edit', actor.id]">
-            <button class="ui button success">Modifier</button>
-          </a>
+        <div class="column">
+            <h2 class="ui header">Liste des films</h2>
+            <div class="ui cards">
+                <div class="card" *ngFor="let film of films">
+                    <div class="content">
+                        <a [routerLink]="['/film', film.id]">
+                            <div class="header">{{film.title}}</div>
+                            <div class="meta">{{film.date}}</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="column">
-      <div class="ui cards">
-        <div class="card" *ngFor="let film of films">
-          <div class="content">
-            <a [routerLink]="['/film', film.id]">
-              <div class="header">{{film.title}}</div>
-              <div class="meta">{{film.date}}</div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>

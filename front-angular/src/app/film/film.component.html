@@ -1,4 +1,10 @@
 <div *ngIf="film">
+    <a  [routerLink]="['/films']">
+        <button class="ui left labeled icon button">
+            <i class="left arrow icon"></i>
+            Retour à la liste des films
+        </button>
+    </a>
     <h1 class="ui header centered">{{film.title}}</h1>
     <br><br><br>
     <div class="ui two column grid">
@@ -42,6 +48,7 @@
             </div>
         </div>
         <div class="column">
+            <h2 class="ui header">Liste des personnages</h2>
             <div class="ui cards">
                 <div class="card" *ngFor="let character of film.personnages">
                     <div class="content">
