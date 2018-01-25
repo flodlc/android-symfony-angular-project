@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Cinema-android</string>
+    <string name="see_films">Voir la liste des films</string>
+    <string name="listFilms">Liste des films</string>
+</resources>
