@@ -22,7 +22,7 @@ export class ActorComponent implements OnInit {
         this.sub = this.route.params.subscribe(params => {
             this.actorServ.getActor(+params['id']).subscribe(actor => {
                 this.actor = actor;
-                if (this.actor.dateDeces == "30/11/-1") {
+                if (this.actor.dateDeces == "30/11/-1" || this.actor.dateDeces == "30/11/-0001") {
                     this.actor.dateDeces = "";
                 }
                 this.actorServ.getActorFilms(+params['id']).subscribe(films => {
