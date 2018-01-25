@@ -47,7 +47,6 @@ Status code : 200 or 202 if not found
 
 
 ### Categories:
-#### TODO
 
 - GET /categories  
 return all categories  
