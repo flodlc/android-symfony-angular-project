@@ -34,6 +34,11 @@
                         <div class="description">{{film.budget | number:'5.0-2'}}€</div>
                     </div>
                 </div>
+                <div class="item">
+                    <a [routerLink]="['/film/edit', film.id]">
+                        <button class="ui button success">Modifier</button>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="column">

@@ -13,6 +13,11 @@ import {FilmService} from "./services/film.service";
 import {ActorService} from "./services/actor.service";
 import {HttpClientModule} from "@angular/common/http";
 import { ActorFormComponent } from './actor-form/actor-form.component';
+import { ActorAddComponent } from './actor-add/actor-add.component';
+import { ActorEditComponent } from './actor-edit/actor-edit.component';
+import { FilmFormComponent } from './film-form/film-form.component';
+import { FilmEditComponent } from './film-edit/film-edit.component';
+import { FilmAddComponent } from './film-add/film-add.component';
 
 
 @NgModule({
@@ -23,7 +28,12 @@ import { ActorFormComponent } from './actor-form/actor-form.component';
         FilmComponent,
         ActorComponent,
         IndexComponent,
-        ActorFormComponent
+        ActorFormComponent,
+        ActorAddComponent,
+        ActorEditComponent,
+        FilmFormComponent,
+        FilmEditComponent,
+        FilmAddComponent
     ],
     imports: [
         BrowserModule,
