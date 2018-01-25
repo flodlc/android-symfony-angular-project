@@ -17,15 +17,15 @@ export class ActorFormComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.actor);
-        if (this.actor.dateDeces == "30/11/-0001")
-            this.actor.dateDeces = "";
         this.createForm(this.actor);
     }
 
     createForm(actor?: Actor) {
-        if (actor)
+        if (actor) {
             this.ActorForm = this.fb.group(actor);
+            if (this.actor.dateDeces == "30/11/-0001")
+                this.actor.dateDeces = "";
+        }
         else
             this.ActorForm = this.fb.group(new Actor());
     }
