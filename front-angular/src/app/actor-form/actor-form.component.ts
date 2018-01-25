@@ -31,8 +31,8 @@ export class ActorFormComponent implements OnInit {
     }
 
     submit() {
-        if (this.ActorForm.get('nom').status == 'VALID'
-            && this.ActorForm.get('prenom').status == 'VALID'
+        if ((this.ActorForm.get('nom').status == 'VALID'
+            || this.ActorForm.get('prenom').status == 'VALID')
             && this.ActorForm.get('dateNaissance').status == 'VALID') {
             this.actorServ.postActor(this.ActorForm.getRawValue()).subscribe(actor => {
                 this.router.navigate(['/actor/' + actor.id]);

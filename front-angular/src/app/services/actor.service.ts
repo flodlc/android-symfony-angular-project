@@ -32,6 +32,8 @@ export class ActorService {
     }
 
     postActor(actor: Actor): Observable<Actor> {
+        if (actor.dateDeces == null)
+            actor.dateDeces = "null";
         const url = environment.apiUrl + 'acteur';
         return this.http.post(url, actor);
     }
