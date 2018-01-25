@@ -14,9 +14,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="@string/listFilms"
+            android:text="@string/listActors"
             android:textSize="25sp"
+            android:layout_marginLeft="10dp"
             android:textStyle="bold" />
 
         <ScrollView

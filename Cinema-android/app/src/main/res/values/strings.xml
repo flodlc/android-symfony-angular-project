@@ -2,4 +2,6 @@
     <string name="app_name">Cinema-android</string>
     <string name="see_films">Voir la liste des films</string>
     <string name="listFilms">Liste des films</string>
+    <string name="listActors">Liste des acteurs</string>
+    <string name="see_actors">Voir la liste des acteurs</string>
 </resources>

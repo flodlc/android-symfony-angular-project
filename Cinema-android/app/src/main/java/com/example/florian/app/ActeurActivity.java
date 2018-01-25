@@ -4,19 +4,18 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.google.common.collect.ImmutableMap;
 import com.google.gson.internal.LinkedTreeMap;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import Service.ApiService;
+import Service.ApiServiceInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Florian on 25/01/2018.
@@ -29,22 +28,18 @@ public class ActeurActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.film);
-        acteur = (HashMap) (getIntent().getExtras().get("film"));
+        setContentView(R.layout.acteur);
+        acteur = (HashMap) (getIntent().getExtras().get("acteur"));
 
-        ((TextView) findViewById(R.id.filmName)).setText((String) acteur.get("title"));
-        ((TextView) findViewById(R.id.filmRea)).setText((String) ((HashMap) acteur.get("realisateur")).get("name"));
-        ((TextView) findViewById(R.id.filmDate)).setText((String) acteur.get("date"));
+        ((TextView) findViewById(R.id.acteurName)).setText(acteur.get("prenom") + " " + acteur.get("nom"));
+        ((TextView) findViewById(R.id.acteurNaissance)).setText((String) acteur.get("dateNaissance"));
+        ((TextView) findViewById(R.id.acteurMort)).setText((String) acteur.get("dateDeces"));
         displayFilms();
     }
 
     private void displayFilms() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.41/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        ApiService service = retrofit.create(ApiService.class);
-        Call<List> call = service.listFilmsByActeurId("?acteur=" + acteur.get("id"));
+        ApiServiceInterface service = ApiService.getService();
+        Call<List> call = service.listFilmsByActeurId(ImmutableMap.of("acteur", String.valueOf(((Double) acteur.get("id")).intValue())));
         call.enqueue(new Callback<List>() {
             @Override
             public void onResponse(Call<List> call, Response<List> response) {

@@ -1,18 +1,18 @@
 package Service;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by Florian on 05/01/2018.
+ * Created by Florian on 25/01/2018.
  */
-public interface ApiService {
-    @GET("films")
-    Call<List> listFilms();
 
-    @GET("films(param)")
-    Call<List> listFilmsByActeurId(@Path("param") String param);
+public class ApiService {
+    public static ApiServiceInterface getService() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.0.41/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        return retrofit.create(ApiServiceInterface.class);
+    }
 }

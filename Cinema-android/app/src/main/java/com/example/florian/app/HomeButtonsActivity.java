@@ -15,7 +15,7 @@ public class HomeButtonsActivity extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_buttons_fragment, container, false);
         setIntent((Button) view.findViewById(R.id.button1), FilmsActivity.class);
-        setIntent((Button) view.findViewById(R.id.button2), FilmsActivity.class);
+        setIntent((Button) view.findViewById(R.id.button2), ActeursActivity.class);
 
         return view;
     }

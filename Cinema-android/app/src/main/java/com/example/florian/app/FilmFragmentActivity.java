@@ -31,7 +31,7 @@ public class FilmFragmentActivity extends Fragment {
         final LinkedTreeMap film = (LinkedTreeMap) getArguments().getSerializable("film");
 
         ((TextView) view.findViewById(R.id.filmName)).setText((String) film.get("title"));
-        ((TextView) view.findViewById(R.id.filmRea)).setText((String) ((LinkedTreeMap)film.get("realisateur")).get("name"));
+        ((TextView) view.findViewById(R.id.filmRea)).setText((String) ((LinkedTreeMap)film.get("realisateur")).get("prenom") + ((LinkedTreeMap)film.get("realisateur")).get("name"));
         ((TextView) view.findViewById(R.id.filmDate)).setText((String) film.get("date"));
 
         view.setOnClickListener(new View.OnClickListener() {

@@ -13,6 +13,7 @@ import com.google.gson.internal.LinkedTreeMap;
 
 import java.util.HashMap;
 
+
 /**
  * Created by Florian on 25/01/2018.
  */
@@ -24,6 +25,22 @@ public class ActeurFragmentActivity extends Fragment {
         args.putSerializable(key, acteur);
         f.setArguments(args);
         return f;
+    }
+
+    public static ActeurFragmentActivity newInstance(String key, LinkedTreeMap acteur) {
+        ActeurFragmentActivity f = new ActeurFragmentActivity();
+        Bundle args = new Bundle();
+        args.putSerializable(key, convertToHashMap(acteur));
+        f.setArguments(args);
+        return f;
+    }
+
+    private static HashMap convertToHashMap(LinkedTreeMap acteur) {
+        HashMap act = new HashMap();
+        for (Object key : acteur.keySet()) {
+            act.put(key, acteur.get(key));
+        }
+        return act;
     }
 
 
@@ -40,7 +57,7 @@ public class ActeurFragmentActivity extends Fragment {
             acteurName = acteur.get("prenom") + " " + acteur.get("nom") + " (" + perso.get("nomPerso") + ")";
         } else {
             acteur = (HashMap) getArguments().getSerializable("acteur");
-            acteurName = (String) acteur.get("name");
+            acteurName = acteur.get("prenom") + " " + acteur.get("nom");
         }
 
         ((TextView) view.findViewById(R.id.acteurName)).setText(acteurName);

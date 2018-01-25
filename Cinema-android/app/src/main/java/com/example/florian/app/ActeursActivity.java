@@ -4,38 +4,38 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
-import Service.ApiService;
-import Service.ApiServiceInterface;
-
 import com.google.gson.internal.LinkedTreeMap;
 
 import java.util.List;
 
+import Service.ApiService;
+import Service.ApiServiceInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Created by Florian on 25/01/2018.
+ */
 
-public class FilmsActivity extends AppCompatActivity {
-
+public class ActeursActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        displayFilms();
-        setContentView(R.layout.films);
+        displayActeurs();
+        setContentView(R.layout.acteurs);
     }
 
-    private void displayFilms() {
+    private void displayActeurs() {
         ApiServiceInterface service = ApiService.getService();
-        Call<List> call = service.listFilms();
-
+        Call<List> call = service.listActeurs();
         call.enqueue(new Callback<List>() {
             @Override
             public void onResponse(Call<List> call, Response<List> response) {
                 List<LinkedTreeMap> list = response.body();
-                for (LinkedTreeMap film : list) {
-                    Fragment filmFragmentActivity = FilmFragmentActivity.newInstance(film);
-                    getSupportFragmentManager().beginTransaction().add(R.id.content, filmFragmentActivity, "Tag").commit();
+                for (LinkedTreeMap acteur : list) {
+                    Fragment acteurFragmentActivity = ActeurFragmentActivity.newInstance("acteur", acteur);
+                    getSupportFragmentManager().beginTransaction().add(R.id.content, acteurFragmentActivity, "Tag").commit();
                 }
             }
 
@@ -45,4 +45,5 @@ public class FilmsActivity extends AppCompatActivity {
             }
         });
     }
+
 }

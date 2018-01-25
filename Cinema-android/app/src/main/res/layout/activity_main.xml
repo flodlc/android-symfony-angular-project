@@ -14,6 +14,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="5dp"
+            android:text="Bienvenue sur l'application cinéma."
+            android:textSize="22sp"/>
+
         <fragment
             android:layout_marginTop="30dp"
             android:id="@+id/homeButtons"
