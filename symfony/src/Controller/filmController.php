@@ -129,12 +129,10 @@ class filmController extends Controller
             $receivedFilm->setRealisateur($realisateur);
 
             $persos = [];
-            if ($receivedFilm->getPersonnages() != null) {
-                foreach ($receivedFilm->getPersonnages() as $perso) {
-                    $persos[] = $entityManager->getRepository(Personnage::class)->find($perso->getId());
-                }
-                $receivedFilm->setPersonnages($persos);
+            foreach ($receivedFilm->getPersonnages() ?? [] as $perso) {
+                $persos[] = $entityManager->getRepository(Personnage::class)->find($perso->getId());
             }
+            $receivedFilm->setPersonnages($persos);
             $entityManager->persist($receivedFilm);
         }
 
