@@ -144,7 +144,7 @@ class Film
     public function setDate($date)
     {
         if (is_string($date)) {
-            $date = \DateTime::createFromFormat("d/m/y", $date);
+            $date = \DateTime::createFromFormat("d/m/Y", $date);
         }
         if (!$date) {
             $date = null;
