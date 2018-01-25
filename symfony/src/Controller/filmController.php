@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Categorie;
 use App\Entity\Film;
 use App\Entity\Personnage;
 use App\Entity\Realisateur;
@@ -127,6 +128,8 @@ class filmController extends Controller
             /** @var $realisateur Realisateur */
             $realisateur = $entityManager->getRepository(Realisateur::class)->find($receivedFilm->getRealisateur()->getId());
             $receivedFilm->setRealisateur($realisateur);
+            $categorie = $entityManager->getRepository(Categorie::class)->find($receivedFilm->getCategorie()->getId());
+            $receivedFilm->setCategorie($categorie);
 
             $persos = [];
             foreach ($receivedFilm->getPersonnages() ?? [] as $perso) {
