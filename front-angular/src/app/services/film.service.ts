@@ -34,16 +34,17 @@ export class FilmService {
 
     delete(id: number) {
         const url = environment.apiUrl + 'film/' + id;
-        let headers = {
-            headers : {
-                'Access-Control-Allow-Origin': '*'
-            }
-        };
         return this.http.delete(url);
     }
 
     postFilm(film: Film): Observable<Film> {
+        console.log(film);
         const url = environment.apiUrl + 'film';
+        console.log(film.personnages.length);
+        if (film.personnages === null)
+            film.personnages = [];
+        if (film.personnages.length === undefined)
+            film.personnages = [film.personnages];
         return this.http.post(url, film);
     }
 }

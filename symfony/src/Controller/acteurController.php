@@ -130,6 +130,6 @@ class acteurController extends Controller
         }
 
         $entityManager->flush();
-        return new Response($this->serializer->serialize($receivedActeur, "json", ["groups" => ["film"]]));
+        return new Response($this->serializer->serialize($receivedActeur, "json", ["groups" => ["acteur"]]));
     }
 }
