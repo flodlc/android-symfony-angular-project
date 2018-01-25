@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class Categorie
 {
     /**
-     * @Groups({"film"})
+     * @Groups({"film", "categorie"})
      *
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -20,7 +20,7 @@ class Categorie
     private $id;
 
     /**
-     * @Groups({"film"})
+     * @Groups({"film", "categorie"})
      *
      * @ORM\Column(type="string")
      */
