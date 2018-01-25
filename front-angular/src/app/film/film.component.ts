@@ -20,7 +20,6 @@ export class FilmComponent implements OnInit {
         this.sub = this.route.params.subscribe(params => {
             this.filmServ.getFilm(+params['id']).subscribe(film => {
                 this.film = film;
-                console.log(this.film);
             });
         });
 

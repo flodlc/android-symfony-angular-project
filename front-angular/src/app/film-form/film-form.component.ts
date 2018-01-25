@@ -31,7 +31,6 @@ export class FilmFormComponent implements OnInit {
             this.directors = directors;
         });
         this.createForm(this.film);
-        console.log(this.film.personnages);
     }
 
     createForm(film?: Film) {
@@ -57,6 +56,8 @@ export class FilmFormComponent implements OnInit {
     }
 
     whichOne(item1, item2){
+        if (!item1 || !item2)
+            return;
         return item1.id == item2.id;
     }
 }

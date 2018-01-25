@@ -24,7 +24,7 @@
             <input class="form-control" formControlName="montantRecette" required>
         </label>
     </div>
-    <div class="form-group field">
+    <div *ngIf="directors" class="form-group field">
         <label>Réalisateur
             <select [compareWith]="whichOne" class="form-control" formControlName="realisateur" required>
                 <option *ngFor="let director of directors" [ngValue]="director">
@@ -33,7 +33,7 @@
             </select>
         </label>
     </div>
-    <div class="form-group field">
+    <div *ngIf="categories" class="form-group field">
         <label>Catégorie
             <select [compareWith]="whichOne" class="form-control" formControlName="categorie" required>
                 <option *ngFor="let category of categories" [ngValue]="category">

@@ -38,9 +38,7 @@ export class FilmService {
     }
 
     postFilm(film: Film): Observable<Film> {
-        console.log(film);
         const url = environment.apiUrl + 'film';
-        console.log(film.personnages.length);
         if (film.personnages === null)
             film.personnages = [];
         if (film.personnages.length === undefined)
