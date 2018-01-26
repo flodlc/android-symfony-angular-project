@@ -53,7 +53,7 @@ public class ActeurFragmentActivity extends Fragment {
 
         if (getArguments().get("personnage") != null) {
             HashMap perso = (HashMap) getArguments().getSerializable("personnage");
-            acteur = (HashMap) perso.get("acteur");
+            acteur = convertToHashMap((LinkedTreeMap) perso.get("acteur"));
             acteurName = acteur.get("prenom") + " " + acteur.get("nom") + " (" + perso.get("nomPerso") + ")";
         } else {
             acteur = (HashMap) getArguments().getSerializable("acteur");
