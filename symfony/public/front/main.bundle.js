@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/actor-add/actor-add.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui text container\">\r\n    <div class=\"ui message\">\r\n        <h1 class=\"ui inverted header centered\">Ajouter un acteur</h1>\r\n        <app-actor-form></app-actor-form>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"ui text container\">\r\n    <div class=\"ui message\">\r\n        <h1 class=\"ui header centered\">Ajouter un acteur</h1>\r\n        <app-actor-form></app-actor-form>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -99,7 +99,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/actor-edit/actor-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"actor\" class=\"ui text container\">\r\n    <div class=\"ui message\">\r\n        <a [routerLink]=\"['/actor', actor.id]\" style=\"float: left\">\r\n            <button class=\"ui left labeled icon primary button\">\r\n                <i class=\"left arrow icon\"></i>\r\n                Retour à la page de l'acteur\r\n            </button>\r\n        </a>\r\n        <br><br>\r\n        <h1 class=\"ui inverted header centered\">Modifier un acteur</h1>\r\n        <h2 class=\"ui inverted header\">{{actor.prenom}} {{actor.nom}}</h2>\r\n        <app-actor-form [actor]=\"actor\" *ngIf=\"actor\"></app-actor-form>\r\n    </div>\r\n</div>"
+module.exports = "<div *ngIf=\"actor\" class=\"ui text container\">\r\n    <div class=\"ui message\">\r\n        <a [routerLink]=\"['/actor', actor.id]\" style=\"float: left\">\r\n            <button class=\"ui left labeled icon primary button\">\r\n                <i class=\"left arrow icon\"></i>\r\n                Retour à la page de l'acteur\r\n            </button>\r\n        </a>\r\n        <br><br>\r\n        <h1 class=\"ui header centered\">Modifier un acteur</h1>\r\n        <h2 class=\"ui header\">{{actor.prenom}} {{actor.nom}}</h2>\r\n        <app-actor-form [actor]=\"actor\" *ngIf=\"actor\"></app-actor-form>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -625,7 +625,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/film-add/film-add.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui text container\">\r\n    <div class=\"ui message\">\r\n        <h1 class=\"ui inverted header centered\">Ajouter un film</h1>\r\n        <app-film-form></app-film-form>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"ui text container\">\r\n    <div class=\"ui message\">\r\n        <h1 class=\"ui header centered\">Ajouter un film</h1>\r\n        <app-film-form></app-film-form>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -686,7 +686,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/film-edit/film-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"film\" class=\"ui text container\">\r\n    <div class=\"ui message\">\r\n        <a [routerLink]=\"['/film', film.id]\" style=\"float: left\">\r\n            <button class=\"ui left labeled icon primary button\">\r\n                <i class=\"left arrow icon\"></i>\r\n                Retour à la page du film\r\n            </button>\r\n        </a>\r\n        <br><br>\r\n        <h1 class=\"ui inverted header centered\">Modifier un film</h1>\r\n        <h2 class=\"ui inverted header\" *ngIf=\"film\">{{film.title}}</h2>\r\n        <app-film-form [film]=\"film\" *ngIf=\"film\"></app-film-form>\r\n    </div>\r\n</div>"
+module.exports = "<div *ngIf=\"film\" class=\"ui text container\">\r\n    <div class=\"ui message\">\r\n        <a [routerLink]=\"['/film', film.id]\" style=\"float: left\">\r\n            <button class=\"ui left labeled icon primary button\">\r\n                <i class=\"left arrow icon\"></i>\r\n                Retour à la page du film\r\n            </button>\r\n        </a>\r\n        <br><br>\r\n        <h1 class=\"ui header centered\">Modifier un film</h1>\r\n        <h2 class=\"ui header\" *ngIf=\"film\">{{film.title}}</h2>\r\n        <app-film-form [film]=\"film\" *ngIf=\"film\"></app-film-form>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
