@@ -206,6 +206,18 @@
     "symfony/serializer": {
         "version": "v4.0.3"
     },
+    "symfony/twig-bridge": {
+        "version": "v4.0.3"
+    },
+    "symfony/twig-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "f75ac166398e107796ca94cc57fa1edaa06ec47f"
+        }
+    },
     "symfony/web-server-bundle": {
         "version": "3.3",
         "recipe": {
@@ -217,6 +229,9 @@
     },
     "symfony/yaml": {
         "version": "v4.0.3"
+    },
+    "twig/twig": {
+        "version": "v2.4.4"
     },
     "zendframework/zend-code": {
         "version": "3.3.0"

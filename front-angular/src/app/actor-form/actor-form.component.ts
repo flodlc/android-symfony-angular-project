@@ -22,9 +22,10 @@ export class ActorFormComponent implements OnInit {
 
     createForm(actor?: Actor) {
         if (actor) {
-            this.ActorForm = this.fb.group(actor);
-            if (this.actor.dateDeces == "30/11/-0001")
+            if (this.actor.dateDeces == "30/11/-1" || this.actor.dateDeces == "30/11/-0001") {
                 this.actor.dateDeces = "";
+            }
+            this.ActorForm = this.fb.group(actor);
         }
         else
             this.ActorForm = this.fb.group(new Actor());

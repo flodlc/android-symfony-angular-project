@@ -1,54 +1,76 @@
-<div *ngIf="film">
-    <a  [routerLink]="['/films']">
-        <button class="ui left labeled icon button">
-            <i class="left arrow icon"></i>
-            Retour à la liste des films
-        </button>
-    </a>
-    <h1 class="ui header centered">{{film.title}}</h1>
-    <br><br><br>
-    <div class="ui two column grid">
-        <div class="column">
-            <div class="ui relaxed divided list">
-                <div class="item">
-                    <i class="large male middle aligned icon"></i>
-                    <div class="content">
-                        <div class="description">{{film.realisateur.prenom}} {{film.realisateur.name}}</div>
+<div *ngIf="film" class="ui text container" id="big_container">
+    <div class="ui message">
+        <a [routerLink]="['/films']" style="float:left;">
+            <button class="ui left labeled icon primary button">
+                <i class="left arrow icon"></i>
+                Retour à la liste des films
+            </button>
+        </a><br><br>
+        <h1 class="ui header centered">{{film.title}}</h1>
+        <br><br><br>
+        <div class="ui divider"></div>
+        <div class="row">
+            <div class="ui small three statistics">
+                <div class="statistic">
+                    <div class="value">
+                        {{film.realisateur.prenom}}<br>
+                        {{film.realisateur.name}}
+                    </div>
+                    <div class="label">
+                        Réalisateur
                     </div>
                 </div>
-                <div class="item">
-                    <i class="large calendar middle aligned icon"></i>
-                    <div class="content">
-                        <div class="description">{{film.date}}</div>
+                <div class="statistic">
+                    <div class="value">
+                        {{film.date}}
+                    </div>
+                    <div class="label">
+                        date de sortie
                     </div>
                 </div>
-                <div class="item">
-                    <i class="large info middle aligned icon"></i>
-                    <div class="content">
-                        <div class="description">{{film.duree}} min.</div>
+                <div class="statistic">
+                    <div class="value">
+                        <i class="info icon"></i> {{film.duree}}
                     </div>
-                </div>
-                <div class="item">
-                    <i class="large tag middle aligned icon"></i>
-                    <div class="content">
-                        <div class="description">{{film.categorie.libelleCat}}</div>
+                    <div class="label">
+                        min.
                     </div>
-                </div>
-                <div class="item">
-                    <i class="large money middle aligned icon"></i>
-                    <div class="content">
-                        <div class="description">{{film.budget}}€</div>
-                    </div>
-                </div>
-                <div class="item">
-                    <a [routerLink]="['/film/edit', film.id]">
-                        <button class="ui button success">Modifier</button>
-                    </a>
                 </div>
             </div>
         </div>
-        <div class="column">
-            <h2 class="ui header">Liste des personnages</h2>
+        <br>
+        <div class="ui divider"></div>
+        <br>
+        <div class="row">
+            <div class="ui small two statistics">
+                <div class="statistic">
+                    <div class="value">
+                        {{film.budget}}€
+                    </div>
+                    <div class="label">
+                        Budget
+                    </div>
+                </div>
+                <div class="statistic">
+                    <div class="value">
+                        <i class="tag icon"></i> {{film.categorie.libelleCat}}
+                    </div>
+                    <div class="label">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="ui divider"></div>
+        <a [routerLink]="['/film/edit', film.id]">
+            <button class="ui button success">Modifier</button>
+        </a>
+        <br>
+        <div class="ui divider"></div>
+        <br>
+        <div class="row">
+            <h2 class="ui header" style="text-align: left">Liste des personnages</h2>
             <div class="ui cards">
                 <div class="card" *ngFor="let character of film.personnages">
                     <div class="content">

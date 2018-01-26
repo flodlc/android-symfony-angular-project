@@ -1,3 +1,14 @@
-<h1 class="ui header centered">Modifier un acteur</h1>
-<h2 class="ui header">{{actor.prenom}} {{actor.nom}}</h2>
-<app-actor-form  [actor]="actor"  *ngIf="actor"></app-actor-form>
+<div *ngIf="actor" class="ui text container">
+    <div class="ui message">
+        <a [routerLink]="['/actor', actor.id]" style="float: left">
+            <button class="ui left labeled icon primary button">
+                <i class="left arrow icon"></i>
+                Retour à la page de l'acteur
+            </button>
+        </a>
+        <br><br>
+        <h1 class="ui header centered">Modifier un acteur</h1>
+        <h2 class="ui header">{{actor.prenom}} {{actor.nom}}</h2>
+        <app-actor-form [actor]="actor" *ngIf="actor"></app-actor-form>
+    </div>
+</div>

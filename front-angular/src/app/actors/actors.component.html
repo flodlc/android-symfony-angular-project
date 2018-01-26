@@ -1,40 +1,45 @@
-<h1 class="ui header centered">Liste des acteurs</h1>
+<div *ngIf="actors" class="ui text container">
+    <div class="ui message">
+        <h1 class="ui header centered">Liste des acteurs</h1>
 
-<hr class="my-4">
-<a class="ui button success" [routerLink]="['/actor/add']">
-    Ajouter un acteur
-</a>
-<hr class="my-4">
-<div class="row">
-    <div class="column">
-        <div class="ui action icon input">
-            <input type="text" placeholder="Recherche..."
-                   [(ngModel)]="dataSearch" (keyup)="setFilter()">
+        <hr class="my-4">
+        <a class="ui button huge primary" [routerLink]="['/actor/add']">
+            Ajouter un acteur
+        </a>
+        <hr class="my-4">
+        <div class="row">
+            <div class="column">
+                <div class="ui action icon input">
+                    <input type="text" placeholder="Recherche..."
+                           [(ngModel)]="dataSearch" (keyup)="setFilter()">
+                </div>
+            </div>
         </div>
+
+        <table class="ui celled unstackable table">
+            <thead>
+            <tr>
+                <th>Nom de l'acteur</th>
+                <th>Date de naissance</th>
+                <th>Date de décès</th>
+                <th>Supprimer</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let actor of actors">
+            <tr>
+                <td>
+                    <a [routerLink]="['/actor', actor.id]">
+                        {{actor.prenom}} {{actor.nom}}
+                    </a>
+                </td>
+                <td>{{actor.dateNaissance}}</td>
+                <td>{{actor.dateDeces}}</td>
+                <td>
+                    <i (click)="delete(actor.id)" class="remove icon"></i>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
-<table class="ui celled unstackable table">
-    <thead>
-    <tr>
-        <th>Nom de l'acteur</th>
-        <th>Date de naissance</th>
-        <th>Date de décès</th>
-        <th>Supprimer</th>
-    </tr>
-    </thead>
-    <tbody *ngFor="let actor of actors">
-    <tr>
-        <td>
-            <a [routerLink]="['/actor', actor.id]">
-                {{actor.prenom}} {{actor.nom}}
-            </a>
-        </td>
-        <td>{{actor.dateNaissance}}</td>
-        <td>{{actor.dateDeces}}</td>
-        <td>
-            <i (click)="delete(actor.id)" class="remove icon"></i>
-        </td>
-
-    </tr>
-    </tbody>
-</table>
