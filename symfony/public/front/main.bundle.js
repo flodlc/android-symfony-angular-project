@@ -1257,7 +1257,7 @@ var FilmService = (function () {
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
     production: false,
-    apiUrl: 'http://localhost:8000/',
+    apiUrl: 'http://172.20.10.4/',
 };
 
 
