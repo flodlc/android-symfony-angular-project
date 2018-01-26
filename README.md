@@ -1,9 +1,16 @@
 # android-symfony-angular-project
 Web api with Synfony and a desktop client with angular and a mobile client on android.
+The API can store a lot of films with some details, like budget or the director. You can edit them.
+You can store some actors and in wich films they have plaid. You can edit them too.
 
+## About technologies
+As we said in introduction, the server was created in Symfony 4 and there is a MySQL databases.
+So you need to have Composer, in order to install all bundles needed by the server (like Doctrine), and MySQL.
+You have the front angular compiled in public directory of symfony. So, at the route "/", you have the client web of the app.
+
+The android app is in the folder android. Minimum SDK version of android : 21.
 
 ## API Doc
-
 ### Films:
 
 - GET /films  
