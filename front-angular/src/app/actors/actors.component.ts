@@ -18,6 +18,10 @@ export class ActorsComponent implements OnInit {
 
     ngOnInit() {
         this.actorServ.getActors().subscribe(actors => {
+            actors = _.forEach(actors, function(actor, key) {
+                if (actor.dateDeces == "30/11/-0001")
+                    actors[key].dateDeces = "";
+            });
             this.actors = actors;
             this.actors_all = actors;
         });

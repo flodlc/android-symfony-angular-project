@@ -384,6 +384,10 @@ var ActorsComponent = (function () {
     ActorsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.actorServ.getActors().subscribe(function (actors) {
+            actors = __WEBPACK_IMPORTED_MODULE_2_lodash__["forEach"](actors, function (actor, key) {
+                if (actor.dateDeces == "30/11/-0001")
+                    actors[key].dateDeces = "";
+            });
             _this.actors = actors;
             _this.actors_all = actors;
         });
