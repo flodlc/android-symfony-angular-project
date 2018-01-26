@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>CINEMA EPUL</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{{ app.request.basepath }}/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <style>
+        body {
+            background: rgb(27, 28, 29);
+        }
+
+        label {
+            color: white !important;
+            text-align: left !important;
+        }
+
+        .ui.container[_ngcontent-c0] {
+            margin: 30px auto !important;
+            width: 80% !important;
+            min-width: 850px!important;
+        }
+
+        #big_container {
+            max-width: 1500px!important;
+        }
+
+    </style>
+</head>
+<body>
+
+<app-root></app-root>
+<div ng-view></div>
+<script type="text/javascript" src="{{ app.request.basepath }}/front/inline.bundle.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}/front/polyfills.bundle.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}/front/styles.bundle.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}/front/vendor.bundle.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}/front/main.bundle.js"></script>
+</body>
+</html>
